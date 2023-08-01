@@ -1,6 +1,11 @@
 import { useState } from "react";
 import CounterDisplay from "./CounterDisplay";
 
+// TODO:
+// * CounterWithoutState olarak kopyalayın
+// * içindeki state leri local variable a çevirin
+// * değişimler ekrana yansıtılıyor mu takip edin
+
 const Counter = function ({ userName }) {
   const [sayac, setSayac] = useState(100);
   const [artisMiktari, setArtisMiktari] = useState(1);
