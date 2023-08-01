@@ -1,6 +1,7 @@
 import { useState } from "react";
+import CounterDisplay from "./CounterDisplay";
 
-const Counter = function () {
+const Counter = function ({ userName }) {
   const [sayac, setSayac] = useState(100);
   const [artisMiktari, setArtisMiktari] = useState(1);
 
@@ -17,15 +18,18 @@ const Counter = function () {
   console.log("Bu renderda sayac değeri: ", sayac);
 
   return (
-    <div>
-      <h3>Counter: {sayac}</h3>
-      <button onClick={arttir}> + Arttır</button>
-      <button onClick={azalt}> - Azalt</button>
-    </div>
+    <CounterDisplay
+      sayac={sayac}
+      arttir={arttir}
+      azalt={azalt}
+      userName={userName}
+    />
   );
 };
 
 export default Counter;
+
+export const PI = 3.1415;
 
 /**
  * "Bu renderda sayac değeri: " 100
