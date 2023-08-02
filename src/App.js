@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import Counter, { PI } from "./components/Counter";
 import CounterDisplay from "./components/CounterDisplay";
 import Greeting from "./components/Greeting";
 import Main from "./layout/Main";
 
-console.log("PI ", PI);
+// console.log("PI ", PI);
 
 // Root Component
 function App() {
@@ -17,11 +18,15 @@ function App() {
 
   const { name } = user;
 
-  console.log(name);
+  // console.log(name);
 
   const logUser = () => {
-    console.log(user);
+    // console.log(user);
   };
+
+  useEffect(() => {
+    // console.warn("TÜM UYGULAMA YÜKLENDİ!");
+  }, []);
 
   return <Main userName={name} />;
 }
