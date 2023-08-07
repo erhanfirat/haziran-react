@@ -5,9 +5,9 @@ import SideBar from "./SideBar";
 
 const Main = ({ userName }) => {
   return (
-    <div>
+    <div className="d-flex flex-column " style={{ minHeight: "100vh" }}>
       <Header />
-      <div className="flex">
+      <div className="flex flex-grow-1">
         <SideBar />
         <PageBody userName={userName} />
       </div>

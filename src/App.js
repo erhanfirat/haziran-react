@@ -3,6 +3,7 @@ import Counter, { PI } from "./components/Counter";
 import CounterDisplay from "./components/CounterDisplay";
 import Greeting from "./components/Greeting";
 import Main from "./layout/Main";
+import { BrowserRouter } from "react-router-dom";
 
 // console.log("PI ", PI);
 
@@ -28,7 +29,11 @@ function App() {
     // console.warn("TÜM UYGULAMA YÜKLENDİ!");
   }, []);
 
-  return <Main userName={name} />;
+  return (
+    <BrowserRouter>
+      <Main userName={name} />
+    </BrowserRouter>
+  );
 }
 
 export default App;

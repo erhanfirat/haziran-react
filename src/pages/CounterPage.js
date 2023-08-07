@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Counter from "../components/Counter";
+import Title from "../components/styledComponents/Title";
 
 const CounterPage = () => {
   const [userName, setUserName] = useState("Ali");
@@ -7,7 +8,7 @@ const CounterPage = () => {
 
   return (
     <div>
-      <h2>Sayaç Sayfası</h2>
+      <h1>Sayaç Sayfası</h1>
       <hr />
       user name: {userName}
       <button

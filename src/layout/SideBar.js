@@ -1,16 +1,45 @@
+import { NavLink } from "react-router-dom";
+
+const activeNavLink = {
+  backgroundColor: "#fffff !important",
+  color: "rgb(13,110,253) !important",
+};
+
 const SideBar = () => {
   return (
-    <div>
-      <nav>
-        <ul>
+    <div className="side-bar p-3 bg-primary color-white">
+      <nav className="side-bar-nav">
+        <ul className="p-0">
           <li>
-            <a href="#">Ana Sayfa</a>
+            <NavLink
+              to={"/"}
+              className={(isActive) =>
+                isActive ? "btn nav-btn-active" : "btn btn-primary"
+              }
+              exact
+            >
+              Ana Sayfa
+            </NavLink>
           </li>
           <li>
-            <a href="#">Sayaç</a>
+            <NavLink
+              to={"/counter"}
+              className={(isActive) =>
+                isActive ? "btn nav-btn-active" : "btn btn-primary"
+              }
+            >
+              Sayaç
+            </NavLink>
           </li>
           <li>
-            <a href="#">Ürünler</a>
+            <NavLink
+              to={"/whoweare"}
+              className={(isActive) =>
+                isActive ? "btn nav-btn-active" : "btn btn-primary"
+              }
+            >
+              Hakkımızda
+            </NavLink>
           </li>
         </ul>
       </nav>
