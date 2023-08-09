@@ -1,4 +1,4 @@
-import LoginForm from "../components/LoginForm";
+import LoginFormYup from "../components/LoginFormYup";
 
 const MainPage = () => {
   return (
@@ -6,7 +6,7 @@ const MainPage = () => {
       <h2>Ana Sayfa</h2>
       <hr />
       <p>Sayfama hoış geldiniz...</p>
-      <LoginForm />
+      <LoginFormYup />
     </div>
   );
 };
