@@ -89,7 +89,6 @@ const LoginFormYup = () => {
   };
 
   useEffect(() => {
-    console.log("Login Data > ", loginData);
     formSchema.isValid(loginData).then((valid) => setFormValid(valid));
   }, [loginData]);
 
@@ -174,6 +173,7 @@ const LoginFormYup = () => {
               value={1}
               onChange={handleInputChange}
               invalid={!!formErrors.option}
+              data-cy="radio-option-1"
             />{" "}
             Option one is this and that—be sure to include why it's great
           </Label>
@@ -217,6 +217,7 @@ const LoginFormYup = () => {
           id="role-select"
           onChange={handleInputChange}
           invalid={!!formErrors.role}
+          data-cy="select-role"
         >
           <option value="">Select your role</option>
           {roller.map((rolItem, i) => {
@@ -238,7 +239,7 @@ const LoginFormYup = () => {
       >
         Reset Form
       </Button>
-      <Button type="submit" disabled={!isFormValid}>
+      <Button type="submit" disabled={!isFormValid} data-cy="login-button">
         Login
       </Button>
     </Form>
