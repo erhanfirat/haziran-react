@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PageDefault from "./PageDefault";
 
 const WhoWeArePage = () => {
   useEffect(() => {
@@ -6,11 +7,9 @@ const WhoWeArePage = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Biz Kimiz?</h2>
-      <hr />
-      <p>Biz var ya biz... </p>
-    </div>
+    <PageDefault pageTitle={"Hakkımızda"}>
+      <p>Lorem ipsum bla bla......</p>
+    </PageDefault>
   );
 };
 

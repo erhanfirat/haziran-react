@@ -1,13 +1,12 @@
 import LoginFormYup from "../components/LoginFormYup";
+import PageDefault from "./PageDefault";
 
 const MainPage = () => {
   return (
-    <div>
-      <h2>Ana Sayfa</h2>
-      <hr />
+    <PageDefault pageTitle={"Ana Sayfa"}>
       <p>Sayfama hoış geldiniz...</p>
       <LoginFormYup />
-    </div>
+    </PageDefault>
   );
 };
 

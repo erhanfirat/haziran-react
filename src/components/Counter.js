@@ -12,15 +12,17 @@ const Counter = function ({ userName }) {
   const [artisMiktari, setArtisMiktari] = useState(1);
 
   // method tanımları
-  const arttir = async () => {
-    // console.log(`setter öncesi sayac: ${sayac}`);
+  const arttir = () => {
+    console.log(`setter öncesi sayac: ${sayac}`);
     setSayac(sayac + artisMiktari);
-    // console.log(`setter sonrası sayac: ${sayac}`);
+    console.log(`setter sonrası sayac: ${sayac}`);
   };
 
   const azalt = () => {
     setSayac(sayac - artisMiktari);
   };
+
+  const sayacGuncelle = (newSayac) => setSayac(newSayac);
 
   const artisMiktariArttir = () => setArtisMiktari(artisMiktari + 1);
   const artisMiktariAzalt = () => setArtisMiktari(artisMiktari - 1);
@@ -78,6 +80,7 @@ const Counter = function ({ userName }) {
         arttir={arttir}
         azalt={azalt}
         userName={userName}
+        sayacGuncelle={sayacGuncelle}
       />
       Artış Mikltarı: {artisMiktari}
       <br />

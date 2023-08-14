@@ -1,16 +1,15 @@
 import { useState } from "react";
 import Counter from "../components/Counter";
 import Title from "../components/styledComponents/Title";
+import PageDefault from "./PageDefault";
 
 const CounterPage = () => {
   const [userName, setUserName] = useState("Ali");
   const [showCounter, setShowCounter] = useState(true);
 
   return (
-    <div>
-      <h1>Sayaç Sayfası</h1>
-      <hr />
-      user name: {userName}
+    <PageDefault pageTitle="Sayaç Sayfası">
+      <h3>user name: {userName}</h3>
       <button
         onClick={() => {
           setUserName(`Anonim${Math.round(Math.random() * 10000)}`);
@@ -27,7 +26,7 @@ const CounterPage = () => {
       </button>
       Conditional Rendering
       {showCounter && <Counter userName={userName} />}
-    </div>
+    </PageDefault>
   );
 };
 
