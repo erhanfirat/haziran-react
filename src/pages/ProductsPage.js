@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PageDefault from "./PageDefault";
 import ProductCard from "../components/ProductCard";
+import { Input } from "reactstrap";
 
 const ProductsPage = ({ products = [] }) => {
   const [searchText, setSearchText] = useState("");
@@ -18,7 +19,11 @@ const ProductsPage = ({ products = [] }) => {
   return (
     <PageDefault pageTitle={"Ürünler Sayfası"}>
       <div>
-        <input type="text" onChange={(e) => setSearchText(e.target.value)} />
+        <Input
+          type="text"
+          onChange={(e) => setSearchText(e.target.value)}
+          placeholder="Type to filter products..."
+        />
       </div>
       <div className="products-container d-flex wrap">
         {products
