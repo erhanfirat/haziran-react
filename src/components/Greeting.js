@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Greeting = (props) => {
+const Greeting = ({ userName }) => {
   // console.log("props: ", props);
   // props?.logUser();
 
@@ -14,7 +14,21 @@ const Greeting = (props) => {
     // console.warn("[ComponentDidUpdate] Greeting componenti yüklendi!");
   });
 
-  return <h1>Sayfama hoşgeldiniz!...</h1>;
+  useEffect(() => {
+    console.log("kullanıcı adı değiştirildi! " + userName);
+  }, [userName]);
+
+  useEffect(() => {
+    // component did mount
+    console.log("Greeting componenti mount edildi!");
+  }, []);
+
+  useEffect(() => {
+    // component did update
+    console.log("Greeting componenti update edildi!");
+  });
+
+  return <h1>Sayfama hoşgeldiniz {userName}!...</h1>;
 };
 
 export default Greeting;

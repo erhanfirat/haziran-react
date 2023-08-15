@@ -59,6 +59,7 @@ const Counter = function ({ userName }) {
     );
 
     return () => {
+      // Component Will Unmount
       console.warn(
         "[ComponentWillUnmount] Counter Componenti kaldırıldı, browserdan silindi"
       );
@@ -67,9 +68,9 @@ const Counter = function ({ userName }) {
 
   useEffect(() => {
     // ComponentDidUpdate
-    // console.warn(
-    //   "[ComponentDidUpdate] Counter Componenti güncellendi, rerender edildi"
-    // );
+    console.warn(
+      "[ComponentDidUpdate] Counter Componenti güncellendi, rerender edildi"
+    );
   });
 
   // template return JSX

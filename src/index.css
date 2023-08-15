@@ -47,3 +47,14 @@ code {
   border-radius: 0.5rem;
   box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.25);
 }
+.products-container {
+  flex-wrap: wrap;
+}
+.product-card {
+  max-width: 20rem;
+  margin: 1rem;
+}
+
+.product-card > img {
+  max-width: 100%;
+}

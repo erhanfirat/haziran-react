@@ -33,6 +33,16 @@ const SideBar = () => {
           </li>
           <li>
             <NavLink
+              to={"/products"}
+              className={(isActive) =>
+                isActive ? "btn nav-btn-active" : "btn btn-primary"
+              }
+            >
+              Ürünler
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to={"/whoweare"}
               className={(isActive) =>
                 isActive ? "btn nav-btn-active" : "btn btn-primary"
