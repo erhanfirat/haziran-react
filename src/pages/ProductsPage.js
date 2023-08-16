@@ -1,7 +1,10 @@
+// outsource JS
 import { useEffect, useState } from "react";
+import { Input } from "reactstrap";
+// internal JS
 import PageDefault from "./PageDefault";
 import ProductCard from "../components/ProductCard";
-import { Input } from "reactstrap";
+// CSS imports
 
 const ProductsPage = ({ products = [] }) => {
   const [searchText, setSearchText] = useState("");
@@ -30,8 +33,8 @@ const ProductsPage = ({ products = [] }) => {
           .filter((product) =>
             product.name.toLowerCase().includes(searchText.toLowerCase())
           )
-          .map((product) => (
-            <ProductCard product={product} />
+          .map((product, i) => (
+            <ProductCard product={product} key={i} />
           ))}
       </div>
     </PageDefault>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Counter from "../components/Counter";
-import Title from "../components/styledComponents/Title";
 import PageDefault from "./PageDefault";
 
 const CounterPage = () => {

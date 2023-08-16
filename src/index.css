@@ -12,9 +12,6 @@ code {
     monospace;
 }
 
-.counter-display {
-}
-
 .flex {
   display: flex;
 }
@@ -49,6 +46,8 @@ code {
 }
 .products-container {
   flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 .product-card {
   max-width: 20rem;
@@ -57,4 +56,8 @@ code {
 
 .product-card > img {
   max-width: 100%;
+}
+
+.products-container > div {
+  overflow: hidden;
 }

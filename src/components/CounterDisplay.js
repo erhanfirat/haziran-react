@@ -15,7 +15,7 @@ const CounterDisplay = ({ sayac, arttir, azalt, userName, sayacGuncelle }) => {
 
   return (
     <div className="d-flex flex-column align-items-center border rounded p-2 my-3 mx-0">
-      <h4>counter display > userName: {userName}</h4>
+      <h4>counter display {'>'} userName: {userName}</h4>
       <h3 data-cy="counter-text">
         Counter: <span data-cy="sayac-degeri">{sayac}</span>
       </h3>

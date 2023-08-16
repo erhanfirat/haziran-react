@@ -9,7 +9,7 @@ const PageDefault = ({ pageTitle, children }) => {
     <div className="page-container">
       <h2>
         <Button color="link" onClick={goBack}>
-          <i class="fa-solid fa-chevron-left"></i>
+          <i className="fa-solid fa-chevron-left"></i>
         </Button>
         {pageTitle}
       </h2>
