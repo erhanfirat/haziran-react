@@ -1,8 +1,16 @@
+import { useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
 
+/**
+ * Şahane bir açıklama
+ * @param {*} param0  müthiş bir parametre
+ * @returns olağanüstü uı
+ */
 const PageDefault = ({ pageTitle, children }) => {
+  const history = useHistory();
   const goBack = () => {
     // TODO: go previous page from history
+    history.goBack();
   };
 
   return (

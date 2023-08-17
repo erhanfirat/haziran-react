@@ -3,6 +3,7 @@ import CounterPage from "../pages/CounterPage";
 import MainPage from "../pages/MainPage";
 import WhoWeArePage from "../pages/WhoWeArePage";
 import ProductsPage from "../pages/ProductsPage";
+import ProductDetailPage from "../pages/ProductDetailPage";
 
 const PageBody = ({ userName, products }) => {
   return (
@@ -17,8 +18,16 @@ const PageBody = ({ userName, products }) => {
         <Route path="/products" exact>
           <ProductsPage products={products} />
         </Route>
+        <Route path="/products/:productId" exact>
+          <ProductDetailPage />
+        </Route>
         <Route path="/" exact>
           <MainPage />
+        </Route>
+        <Route path="*">
+          <div style={{ color: "red" }}>
+            <h1>404 - Aradığınız sayfa bulunamadı!</h1>
+          </div>
         </Route>
       </Switch>
     </div>
