@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import LoginFormYup from "../components/LoginFormYup";
 import PageDefault from "./PageDefault";
+import LoginFormHook from "../components/LoginFormHook";
 
 const MainPage = () => {
   useEffect(() => {
@@ -16,7 +16,7 @@ const MainPage = () => {
   return (
     <PageDefault pageTitle={"Ana Sayfa"}>
       <p>Sayfama hoış geldiniz...</p>
-      <LoginFormYup />
+      <LoginFormHook />
     </PageDefault>
   );
 };
