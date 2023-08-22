@@ -1,8 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Greeting = ({ userName }) => {
   // console.log("props: ", props);
   // props?.logUser();
+
+  const [now, setNow] = useState(new Date());
+
+  setInterval(() => {
+    setNow(new Date());
+  }, 1000);
 
   useEffect(() => {
     // component did mount
@@ -28,7 +34,11 @@ const Greeting = ({ userName }) => {
     console.log("Greeting componenti update edildi!");
   });
 
-  return <h1>Sayfama hoşgeldiniz {userName}!...</h1>;
+  return (
+    <h1 className="p-2 my-2 border-2 border-solid border-red-500 ">
+      Sayfama hoşgeldiniz {userName}!... {now.toString()}
+    </h1>
+  );
 };
 
 export default Greeting;

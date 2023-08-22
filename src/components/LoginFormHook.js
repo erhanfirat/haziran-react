@@ -132,8 +132,14 @@ const LoginFormHook = () => {
       </FormGroup>
 
       <br />
-      <Button type="button">Reset Form</Button>
-      <Button type="submit" disabled={!isValid}>
+      <Button type="button" className="t-btn w-[45%]">
+        Reset Form
+      </Button>
+      <Button
+        type="submit"
+        className="t-btn ml-2 w-[calc(50%)]"
+        disabled={!isValid}
+      >
         Login
       </Button>
     </Form>
