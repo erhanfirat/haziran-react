@@ -11,7 +11,10 @@ export const useAxios = (initialData, reqType, endpoint, payload) => {
     setTimeout(() => {
       axios[reqType](endpoint, payload)
         .then((res) => setData(res.data))
-        .catch((err) => setErr(err))
+        .catch((err) => {
+          setErr(err);
+          // trackError(reqType, endpoint, payload);
+        })
         .finally(() => setLoading(false));
     }, 2000);
   };
