@@ -8,21 +8,28 @@ import CounterDisplay from "./CounterDisplay";
 
 const Counter = function ({ userName }) {
   // state prop local variable tanımlamaları
-  const [sayac, setSayac] = useState(100);
+  const [sayac, setSayac] = useState(
+    () => parseInt(localStorage.getItem("sayac")) || 100
+  );
   const [artisMiktari, setArtisMiktari] = useState(1);
+
+  const updateSayac = (val) => {
+    setSayac(val);
+    localStorage.setItem("sayac", val);
+  };
 
   // method tanımları
   const arttir = () => {
     console.log(`setter öncesi sayac: ${sayac}`);
-    setSayac(sayac + artisMiktari);
+    updateSayac(sayac + artisMiktari);
     console.log(`setter sonrası sayac: ${sayac}`);
   };
 
   const azalt = () => {
-    setSayac(sayac - artisMiktari);
+    updateSayac(sayac - artisMiktari);
   };
 
-  const sayacGuncelle = (newSayac) => setSayac(newSayac);
+  const sayacGuncelle = (newSayac) => updateSayac(newSayac);
 
   const artisMiktariArttir = () => setArtisMiktari(artisMiktari + 1);
   const artisMiktariAzalt = () => setArtisMiktari(artisMiktari - 1);

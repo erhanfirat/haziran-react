@@ -1,7 +1,7 @@
 /* Directive @tailwind */
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 body {
   margin: 0;
@@ -66,8 +66,7 @@ code {
 .products-container > div {
   overflow: hidden;
 }
-
+/* 
 .t-btn {
-  /* Directive @apply */
   @apply bg-dodger-blue-500 p-2 rounded border border-dodger-blue-900 text-white hover:bg-dodger-blue-700 active:bg-rose-500 shadow-md;
-}
+} */

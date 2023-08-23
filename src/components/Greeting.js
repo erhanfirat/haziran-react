@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
 
-const Greeting = ({ userName }) => {
-  // console.log("props: ", props);
-  // props?.logUser();
-
+const Greeting = ({ userName, surname }) => {
   const [now, setNow] = useState(new Date());
-
-  setInterval(() => {
-    setNow(new Date());
-  }, 1000);
 
   useEffect(() => {
     // component did mount
@@ -36,7 +29,7 @@ const Greeting = ({ userName }) => {
 
   return (
     <h1 className="p-2 my-2 border-2 border-solid border-red-500 ">
-      Sayfama hoşgeldiniz {userName}!... {now.toString()}
+      Sayfama hoşgeldiniz {userName} {surname}!...
     </h1>
   );
 };

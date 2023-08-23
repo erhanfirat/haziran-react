@@ -2,25 +2,24 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Spinner } from "reactstrap";
 // internal JS
 import PageDefault from "./PageDefault";
 import ProductCard from "../components/ProductCard";
+import { useAxios } from "../hooks/useAxios";
 // CSS imports
 
 const ProductDetailPage = () => {
-  const [product, setProduct] = useState({});
-
   const { productId } = useParams();
 
+  const [product, getProduct, showSpinner, err] = useAxios(
+    {},
+    "get",
+    `https://620d69fb20ac3a4eedc05e3a.mockapi.io/api/products/${productId}`
+  );
+
   useEffect(() => {
-    productId &&
-      axios
-        .get(
-          `https://620d69fb20ac3a4eedc05e3a.mockapi.io/api/products/${productId}`
-        )
-        .then((res) => {
-          setProduct(res.data);
-        });
+    productId && getProduct();
   }, [productId]);
 
   useEffect(() => {
@@ -36,7 +35,12 @@ const ProductDetailPage = () => {
   return (
     <PageDefault pageTitle={"Ürün Detay Sayfası " + productId}>
       <div className="products-container d-flex wrap">
-        <ProductCard product={product} />
+        {showSpinner && (
+          <Spinner className="m-5" color="primary">
+            Loading...
+          </Spinner>
+        )}
+        {!showSpinner && <ProductCard product={product} />}
       </div>
     </PageDefault>
   );

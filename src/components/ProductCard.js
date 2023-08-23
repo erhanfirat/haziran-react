@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
         width: "18rem",
       }}
     >
-      <img alt={product.name} src={product.img} />
+      <img alt={product?.name} src={product?.img} />
       <CardBody>
         <CardTitle tag="h3">{product.name}</CardTitle>
         <CardText>{product.description}</CardText>

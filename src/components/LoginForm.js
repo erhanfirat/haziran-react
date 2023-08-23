@@ -21,7 +21,7 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submit Edildi! ", loginData);
-    // axios.post("https://wwww.haziran-react.com/api/login", loginData);
+    axios.post("https://wwww.haziran-react.com/api/login", loginData);
   };
 
   const handleInputChange = (e) => {
