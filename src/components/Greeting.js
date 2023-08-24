@@ -28,7 +28,7 @@ const Greeting = ({ userName, surname }) => {
   });
 
   return (
-    <h1 className="p-2 my-2 border-2 border-solid border-red-500 ">
+    <h1 id="greeting-header" className="p-2 my-2 border-2 border-solid border-red-500 ">
       Sayfama hoşgeldiniz {userName} {surname}!...
     </h1>
   );

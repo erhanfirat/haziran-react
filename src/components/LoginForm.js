@@ -49,6 +49,7 @@ const LoginForm = () => {
           value={loginData.email}
           onChange={handleInputChange}
           placeholder="Lütfen eposta bilgisini giriniz..."
+          data-testid="email-input"
         />
       </FormGroup>
 
