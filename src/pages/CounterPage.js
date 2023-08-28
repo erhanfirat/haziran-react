@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Counter from "../components/Counter";
 import PageDefault from "./PageDefault";
+import CounterReducer from "../components/CounterReducer";
 
 const CounterPage = () => {
   const [userName, setUserName] = useState("Ali");
@@ -24,7 +24,7 @@ const CounterPage = () => {
         Show / Hide Counter
       </button>
       Conditional Rendering
-      {showCounter && <Counter userName={userName} />}
+      {showCounter && <CounterReducer userName={userName} />}
     </PageDefault>
   );
 };

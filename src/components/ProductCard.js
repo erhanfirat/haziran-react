@@ -13,7 +13,7 @@ import {
  * @param {Product} product aldığı product datasını ekrana cart içinde gösterir
  * @returns Product Card JSX templati döndürür
  */
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, deleteProduct }) => {
   const history = useHistory();
 
   const goToProduct = () => {
@@ -34,9 +34,12 @@ const ProductCard = ({ product }) => {
         <CardSubtitle className="mb-2 text-muted" tag="h6">
           {product.price}
         </CardSubtitle>
-        <Button color="primary">Sepete Ekle</Button>
         <Button color="secondary" onClick={goToProduct}>
           İncele
+        </Button>
+        <Button color="primary">Sepete Ekle</Button>
+        <Button color="danger" onClick={() => deleteProduct(product.id)}>
+          Sil
         </Button>
       </CardBody>
     </Card>

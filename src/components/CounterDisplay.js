@@ -2,7 +2,14 @@ import { Button } from "reactstrap";
 
 import "./CounterDisplay.css";
 
-const CounterDisplay = ({ sayac, arttir, azalt, userName, sayacGuncelle }) => {
+const CounterDisplay = ({
+  sayac,
+  arttir,
+  azalt,
+  userName,
+  resetSayac,
+  sayacGuncelle,
+}) => {
   /**
    * props = {
    *  sayac: val,
@@ -15,7 +22,9 @@ const CounterDisplay = ({ sayac, arttir, azalt, userName, sayacGuncelle }) => {
 
   return (
     <div className="d-flex flex-column align-items-center border rounded p-2 my-3 mx-0">
-      <h4>counter display {'>'} userName: {userName}</h4>
+      <h4>
+        counter display {">"} userName: {userName}
+      </h4>
       <h3 data-cy="counter-text">
         Counter: <span data-cy="sayac-degeri">{sayac}</span>
       </h3>
@@ -25,7 +34,7 @@ const CounterDisplay = ({ sayac, arttir, azalt, userName, sayacGuncelle }) => {
       <Button color="success" onClick={arttir}>
         + Arttır
       </Button>
-      <Button onClick={() => sayacGuncelle(100)}>Reset</Button>
+      <Button onClick={resetSayac}>Reset</Button>
     </div>
   );
 };

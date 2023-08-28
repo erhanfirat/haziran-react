@@ -6,7 +6,7 @@ import PageDefault from "./PageDefault";
 import ProductCard from "../components/ProductCard";
 // CSS imports
 
-const ProductsPage = ({ products = [] }) => {
+const ProductsPage = ({ products = [], deleteProduct }) => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -34,7 +34,11 @@ const ProductsPage = ({ products = [] }) => {
             product.name.toLowerCase().includes(searchText.toLowerCase())
           )
           .map((product, i) => (
-            <ProductCard product={product} key={i} />
+            <ProductCard
+              product={product}
+              key={i}
+              deleteProduct={deleteProduct}
+            />
           ))}
       </div>
     </PageDefault>
