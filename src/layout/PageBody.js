@@ -5,7 +5,7 @@ import WhoWeArePage from "../pages/WhoWeArePage";
 import ProductsPage from "../pages/ProductsPage";
 import ProductDetailPage from "../pages/ProductDetailPage";
 
-const PageBody = ({ userName, products, deleteProduct }) => {
+const PageBody = ({ userName }) => {
   return (
     <div className="p-3 flex-grow-1">
       <Switch>
@@ -16,7 +16,7 @@ const PageBody = ({ userName, products, deleteProduct }) => {
           <WhoWeArePage />
         </Route>
         <Route path="/products" exact>
-          <ProductsPage products={products} deleteProduct={deleteProduct} />
+          <ProductsPage />
         </Route>
         <Route path="/products/:productId" exact>
           <ProductDetailPage />

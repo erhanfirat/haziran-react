@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
   Button,
@@ -7,19 +8,24 @@ import {
   CardText,
   CardTitle,
 } from "reactstrap";
+import { productsActions } from "../store/actions/productsActions";
 
 /**
  * ProductCard Componenti
  * @param {Product} product aldığı product datasını ekrana cart içinde gösterir
  * @returns Product Card JSX templati döndürür
  */
-const ProductCard = ({ product, deleteProduct }) => {
+const ProductCard = ({ product }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const goToProduct = () => {
     // navitage programmatically
     history.push(`/products/${product.id}`);
   };
+
+  const deleteProduct = (productId) =>
+    dispatch({ type: productsActions.delete, payload: productId });
 
   return (
     <Card

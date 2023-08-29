@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Greeting = ({ userName, surname }) => {
   const [now, setNow] = useState(new Date());
+
+  const title = useSelector((store) => store.title);
 
   useEffect(() => {
     // component did mount
@@ -28,8 +31,12 @@ const Greeting = ({ userName, surname }) => {
   });
 
   return (
-    <h1 id="greeting-header" className="p-2 my-2 border-2 border-solid border-red-500 ">
+    <h1
+      id="greeting-header"
+      className="p-2 my-2 border-2 border-solid border-red-500 "
+    >
       Sayfama hoşgeldiniz {userName} {surname}!...
+      {title}
     </h1>
   );
 };

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 const loginDataInitial = {
@@ -17,6 +18,7 @@ const roller = [
 
 const LoginForm = () => {
   const [loginData, setLoginData] = useState(loginDataInitial);
+  const title = useSelector((store) => store.title);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={handleSubmit} className="login-form">
-      <h2>Login Form</h2>
+      <h2>Login Form {title}</h2>
       <hr />
       <FormGroup>
         <Label htmlFor="user-mail">Email</Label>

@@ -3,7 +3,7 @@ import Header from "./Header";
 import PageBody from "./PageBody";
 import SideBar from "./SideBar";
 
-const Main = ({ userName, products, deleteProduct }) => {
+const Main = ({ userName }) => {
   return (
     <div className="d-flex flex-column " style={{ minHeight: "100vh" }}>
       <Header />
@@ -11,8 +11,6 @@ const Main = ({ userName, products, deleteProduct }) => {
         <SideBar />
         <PageBody
           userName={userName}
-          products={products}
-          deleteProduct={deleteProduct}
         />
       </div>
       <Footer />

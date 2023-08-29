@@ -1,4 +1,8 @@
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { productsActions } from "../store/actions/productsActions";
+import { Button } from "reactstrap";
+import { loadProducts } from "../utils/api";
 
 const activeNavLink = {
   backgroundColor: "#fffff !important",
@@ -6,6 +10,16 @@ const activeNavLink = {
 };
 
 const SideBar = () => {
+  const dispatch = useDispatch();
+  const productsLength = useSelector((store) => store.products.length);
+
+  const clearProducts = () => dispatch({ type: productsActions.clear });
+
+  const getProducts = () =>
+    loadProducts().then((res) =>
+      dispatch({ type: productsActions.set, payload: res.data })
+    );
+
   return (
     <div className="side-bar p-3 bg-primary color-white">
       <nav className="side-bar-nav">
@@ -38,7 +52,7 @@ const SideBar = () => {
                 isActive ? "btn nav-btn-active" : "btn btn-primary"
               }
             >
-              Ürünler
+              Ürünler [{productsLength}]
             </NavLink>
           </li>
           <li>
@@ -50,6 +64,16 @@ const SideBar = () => {
             >
               Hakkımızda
             </NavLink>
+          </li>
+          <li>
+            <Button color="danger" onClick={clearProducts}>
+              Clear Products
+            </Button>
+          </li>
+          <li>
+            <Button color="primary" onClick={getProducts}>
+              Load Products
+            </Button>
           </li>
         </ul>
       </nav>

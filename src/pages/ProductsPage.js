@@ -4,10 +4,12 @@ import { Input } from "reactstrap";
 // internal JS
 import PageDefault from "./PageDefault";
 import ProductCard from "../components/ProductCard";
+import { useSelector } from "react-redux";
 // CSS imports
 
-const ProductsPage = ({ products = [], deleteProduct }) => {
+const ProductsPage = ({  }) => {
   const [searchText, setSearchText] = useState("");
+  const products = useSelector((store) => store.products);
 
   useEffect(() => {
     console.warn(
@@ -37,7 +39,6 @@ const ProductsPage = ({ products = [], deleteProduct }) => {
             <ProductCard
               product={product}
               key={i}
-              deleteProduct={deleteProduct}
             />
           ))}
       </div>
