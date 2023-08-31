@@ -8,7 +8,10 @@ import {
   CardText,
   CardTitle,
 } from "reactstrap";
-import { productsActions } from "../store/actions/productsActions";
+import {
+  deleteProductActionCreator,
+  productsActions,
+} from "../store/actions/productsActions";
 
 /**
  * ProductCard Componenti
@@ -25,7 +28,7 @@ const ProductCard = ({ product }) => {
   };
 
   const deleteProduct = (productId) =>
-    dispatch({ type: productsActions.delete, payload: productId });
+    dispatch(deleteProductActionCreator(productId));
 
   return (
     <Card

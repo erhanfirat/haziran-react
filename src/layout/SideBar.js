@@ -11,7 +11,9 @@ const activeNavLink = {
 
 const SideBar = () => {
   const dispatch = useDispatch();
-  const productsLength = useSelector((store) => store.products.length);
+  const productsLength = useSelector(
+    (store) => store.products.productsList.length
+  );
 
   const clearProducts = () => dispatch({ type: productsActions.clear });
 
