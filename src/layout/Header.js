@@ -1,18 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Greeting from "../components/Greeting";
 import { Button } from "reactstrap";
 import { useInput } from "../hooks/useInput";
+import { SiteGlobalContext } from "../context/SiteGlobal";
 
 const Header = () => {
-  // const isim = localStorage.getItem("name") || "Anonim";
-  // const [userName, setUserName] = useState(isim);
-
   const [userName, setUserName] = useState(
     () => localStorage.getItem("name") || "Anonim"
   );
-
   const [name, nameHandler] = useInput("");
   const [surname, surnameHandler] = useInput("");
+  const { theme, makeLight, makeDark } = useContext(SiteGlobalContext);
 
   const userNameUpdate = () => {
     setUserName(name);
@@ -21,6 +19,9 @@ const Header = () => {
 
   return (
     <header className="header p-3">
+      <Button onClick={() => (theme === "light" ? makeDark() : makeLight())}>
+        Change Theme
+      </Button>
       <div>
         <label>
           Name:

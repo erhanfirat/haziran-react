@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { productsActions } from "../store/actions/productsActions";
 import { Button } from "reactstrap";
 import { loadProducts } from "../utils/api";
+import { useContext } from "react";
+import { CounterContext } from "../context/CounterProvider";
 
 const activeNavLink = {
   backgroundColor: "#fffff !important",
@@ -14,6 +16,7 @@ const SideBar = () => {
   const productsLength = useSelector(
     (store) => store.products.productsList.length
   );
+  const { counter } = useContext(CounterContext);
 
   const clearProducts = () => dispatch({ type: productsActions.clear });
 
@@ -44,7 +47,7 @@ const SideBar = () => {
                 isActive ? "btn nav-btn-active" : "btn btn-primary"
               }
             >
-              Sayaç
+              Sayaç {`[${counter}]`}
             </NavLink>
           </li>
           <li>
