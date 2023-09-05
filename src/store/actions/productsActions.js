@@ -1,6 +1,5 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { token } from "../../utils/util";
 import { axiosWithAuth } from "../../api/api";
 
 export const productsActions = Object.freeze({
@@ -15,11 +14,7 @@ export const loadProductsActionCreator = () => (dispatch) => {
   dispatch({ type: productsActions.setLoading, payload: true });
   setTimeout(() => {
     axiosWithAuth()
-      .get("products", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      })
+      .get("products")
       .then((res) => {
         dispatch({ type: productsActions.set, payload: res.data });
       })
@@ -37,7 +32,7 @@ export const loadProductsActionCreator = () => (dispatch) => {
 export const deleteProductActionCreator = (productId) => (dispatch) => {
   productId &&
     axiosWithAuth()
-      .delete(`products/123${productId}`)
+      .delete(`products/${productId}`)
       .then((res) => {
         // iki seçenek
         // 1. reducer içinden sil

@@ -1,30 +1,31 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { axiosWithAuth } from "../api/api";
+import { useHistory, useLocation } from "react-router-dom";
 
 const loginDataInitial = {
   email: "",
   password: "",
   rememberMe: false,
-  terms: false,
 };
-
-const roller = [
-  { label: "Yönetici", value: "admin" },
-  { label: "Yazar", value: "Writer" },
-  { label: "Okur", value: "Reader" },
-];
 
 const LoginForm = () => {
   const [loginData, setLoginData] = useState(loginDataInitial);
   const title = useSelector((store) => store.title);
+  const history = useHistory();
+  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submit Edildi! ", loginData);
-    axiosWithAuth().post("login", loginData);
+    axiosWithAuth()
+      .post("login", loginData)
+      .then((res) => {
+        const token = res.data.token;
+        localStorage.setItem("token", token);
+        history.push(location.state.referrer);
+      });
   };
 
   const handleInputChange = (e) => {
@@ -35,13 +36,9 @@ const LoginForm = () => {
     });
   };
 
-  useEffect(() => {
-    console.log("Login Data > ", loginData);
-  }, [loginData]);
-
   return (
     <Form onSubmit={handleSubmit} className="login-form">
-      <h2>Login Form {title}</h2>
+      <h2>Login Form ee {title}</h2>
       <hr />
       <FormGroup>
         <Label htmlFor="user-mail">Email</Label>
@@ -75,76 +72,6 @@ const LoginForm = () => {
           checked={loginData.rememberMe}
           onChange={handleInputChange}
         />
-      </FormGroup>
-      <FormGroup check>
-        <Label htmlFor="terms">Terms</Label>
-        <Input
-          id="terms"
-          type="checkbox"
-          name="terms"
-          checked={loginData.terms}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-
-      <FormGroup tag="fieldset">
-        <legend>Radio Buttons</legend>
-        <FormGroup check>
-          <Label check>
-            <Input
-              type="radio"
-              name="option"
-              value={1}
-              onChange={handleInputChange}
-            />{" "}
-            Option one is this and that—be sure to include why it's great
-          </Label>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <Input
-              type="radio"
-              name="option"
-              value={2}
-              onChange={handleInputChange}
-            />{" "}
-            Option two can be something else and selecting it will deselect
-            option one
-          </Label>
-        </FormGroup>
-        <FormGroup check disabled>
-          <Label check>
-            <Input
-              type="radio"
-              name="option"
-              value={3}
-              onChange={handleInputChange}
-            />{" "}
-            Option three is disabled
-          </Label>
-        </FormGroup>
-      </FormGroup>
-      <FormGroup>
-        <Label for="role-select">Rol</Label>
-        <Input
-          type="select"
-          name="role"
-          id="role-select"
-          onChange={handleInputChange}
-          defaultValue={""}
-        >
-          <option value="" disabled>
-            Select your role
-          </option>
-          {/* { label: "Yönetici", value: "admin" } */}
-          {roller.map((rolItem, i) => {
-            return (
-              <option key={i} value={rolItem.value}>
-                {rolItem.label}
-              </option>
-            );
-          })}
-        </Input>
       </FormGroup>
       <br />
       <Button
