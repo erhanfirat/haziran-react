@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { axiosWithAuth } from "../api/api";
 
 export const useAxios = (initialData, reqType, endpoint, payload) => {
   const [loading, setLoading] = useState(false);
@@ -9,7 +10,8 @@ export const useAxios = (initialData, reqType, endpoint, payload) => {
   const doRequest = () => {
     setLoading(true);
     setTimeout(() => {
-      axios[reqType](endpoint, payload)
+      axiosWithAuth()
+        [reqType](endpoint, payload)
         .then((res) => setData(res.data))
         .catch((err) => {
           setErr(err);

@@ -1,5 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { token } from "../../utils/util";
+import { axiosWithAuth } from "../../api/api";
 
 export const productsActions = Object.freeze({
   set: "SET_PRODUCTS",
@@ -12,8 +14,12 @@ export const productsActions = Object.freeze({
 export const loadProductsActionCreator = () => (dispatch) => {
   dispatch({ type: productsActions.setLoading, payload: true });
   setTimeout(() => {
-    axios
-      .get("https://620d69fb20ac3a4eedc05e3a.mockapi.io/api/products")
+    axiosWithAuth()
+      .get("products", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
       .then((res) => {
         dispatch({ type: productsActions.set, payload: res.data });
       })
@@ -30,10 +36,8 @@ export const loadProductsActionCreator = () => (dispatch) => {
 
 export const deleteProductActionCreator = (productId) => (dispatch) => {
   productId &&
-    axios
-      .delete(
-        `https://620d69fb20ac3a4eedc05e3a.mockapi.io/api/products/123${productId}`
-      )
+    axiosWithAuth()
+      .delete(`products/123${productId}`)
       .then((res) => {
         // iki seçenek
         // 1. reducer içinden sil

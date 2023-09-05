@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { productsActions } from "../store/actions/productsActions";
 import { Button } from "reactstrap";
-import { loadProducts } from "../utils/api";
+import { loadProducts } from "../utils/endpoints";
 import { useContext } from "react";
 import { CounterContext } from "../context/CounterProvider";
 

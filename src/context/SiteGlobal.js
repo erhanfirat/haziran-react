@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useState } from "react";
 import { CounterContext } from "./CounterProvider";
 import axios from "axios";
+import { axiosWithAuth } from "../api/api";
 
 export const SiteGlobalContext = createContext();
 
@@ -25,7 +26,7 @@ const SiteGlobalProvider = ({ children }) => {
   const makeDark = () => dispatchTheme({ type: "SET_THEME_DARK" });
 
   const loadProducts = () => {
-    axios.get("producst").then((res) => setProducts(res.data));
+    axiosWithAuth().get("products").then((res) => setProducts(res.data));
   };
 
   return (

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { axiosWithAuth } from "../api/api";
 
 const loginDataInitial = {
   email: "",
@@ -23,7 +24,7 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submit Edildi! ", loginData);
-    axios.post("https://wwww.haziran-react.com/api/login", loginData);
+    axiosWithAuth().post("login", loginData);
   };
 
   const handleInputChange = (e) => {
