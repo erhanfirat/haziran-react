@@ -12,7 +12,7 @@ const PageBody = ({ userName }) => {
     <div className="p-3 flex-grow-1">
       <Switch>
         <Route path="/counter" exact>
-          <ProtectedPage pageComponent={CounterPage} from={"/counter"} />
+          <ProtectedPage PageComponent={CounterPage} from={"/counter"} />
         </Route>
         <Route path="/whoweare" exact>
           <WhoWeArePage />
@@ -21,7 +21,7 @@ const PageBody = ({ userName }) => {
           <LoginPage />
         </Route>
         <Route path="/products" exact>
-          <ProtectedPage pageComponent={ProductsPage} from={"/products"} />
+          <ProtectedPage PageComponent={ProductsPage} from={"/products"} />
         </Route>
         <Route path="/products/:productId" exact>
           <ProductDetailPage />

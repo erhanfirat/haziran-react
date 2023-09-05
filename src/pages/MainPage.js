@@ -24,10 +24,10 @@ const MainPage = () => {
 
   return (
     <PageDefault pageTitle={"Ana Sayfa"}>
-      <p>Sayfama hoış geldiniz...</p>
+      <p>Sayfama hoş geldiniz...</p>
       <input type="text" onChange={(e) => setNewTitle(e.target.value)} />
       <button onClick={changeReduxTitle}>Change Title</button>
-      <LoginForm />
+      <p>Lorem ipsum </p>
     </PageDefault>
   );
 };

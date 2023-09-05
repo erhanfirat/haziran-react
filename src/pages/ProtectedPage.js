@@ -1,10 +1,9 @@
 import { Redirect } from "react-router-dom";
 
-const ProtectedPage = ({ pageComponent: PageComponent, from }) => {
+const ProtectedPage = ({ PageComponent, from }) => {
   return localStorage.getItem("token") ? (
     <PageComponent />
   ) : (
-    // <Redirect to={"/login?from=" + from} from={from} />
     <Redirect
       to={{
         pathname: "/login",
