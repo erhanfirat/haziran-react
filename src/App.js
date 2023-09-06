@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import { axiosWithAuth } from "./api/api";
+import { REQ_TYPES, useAxios } from "./hooks/useAxios";
 
 // Root Component
 function App() {
@@ -14,16 +15,20 @@ function App() {
     age: 19,
     email: "ali@veli.com",
   };
+  const token = localStorage.getItem("token");
 
   const { name } = user;
 
+  const [checkUser, checkUserRes, checkUserLoading, checkUserErr] = useAxios({
+    reqType: REQ_TYPES.POST,
+    endpoint: "checkUser",
+    payload: { token },
+  });
+
   // component did mount
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
     token &&
-      axiosWithAuth()
-        .post("checkUser", { token })
+      checkUser()
         .then((res) => {
           if (res.data) {
             // her şey yolunda

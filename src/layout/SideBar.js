@@ -62,6 +62,16 @@ const SideBar = () => {
           </li>
           <li>
             <NavLink
+              to={"/create-product"}
+              className={(isActive) =>
+                isActive ? "btn nav-btn-active" : "btn btn-success"
+              }
+            >
+              Yeni Ürün Ekle
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to={"/whoweare"}
               className={(isActive) =>
                 isActive ? "btn nav-btn-active" : "btn btn-primary"

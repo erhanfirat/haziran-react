@@ -1,6 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import { axiosWithAuth } from "../../api/api";
+import { REQ_TYPES, useAxios } from "../../hooks/useAxios";
 
 export const productsActions = Object.freeze({
   set: "SET_PRODUCTS",

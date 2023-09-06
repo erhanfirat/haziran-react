@@ -6,6 +6,8 @@ import ProductsPage from "../pages/ProductsPage";
 import ProductDetailPage from "../pages/ProductDetailPage";
 import LoginPage from "../pages/LoginPage";
 import ProtectedPage from "../pages/ProtectedPage";
+import ProductFormPage from "../pages/ProductFormPage";
+import ProductAddPage from "../pages/ProductAddPage";
 
 const PageBody = ({ userName }) => {
   return (
@@ -25,6 +27,12 @@ const PageBody = ({ userName }) => {
         </Route>
         <Route path="/products/:productId" exact>
           <ProductDetailPage />
+        </Route>
+        <Route path="/product-form/:productId" exact>
+          <ProductFormPage />
+        </Route>
+        <Route path="/create-product" exact>
+          <ProductAddPage />
         </Route>
         <Route path="/" exact>
           <MainPage />

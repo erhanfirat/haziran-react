@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { axiosWithAuth } from "../api/api";
 import { useHistory, useLocation } from "react-router-dom";
+import { REQ_TYPES, useAxios } from "../hooks/useAxios";
 
 const loginDataInitial = {
   email: "",
@@ -15,17 +16,20 @@ const LoginForm = () => {
   const title = useSelector((store) => store.title);
   const history = useHistory();
   const location = useLocation();
+  const [doLogin, loginRes, loginLoading, loginErr] = useAxios({
+    reqType: REQ_TYPES.POST,
+    endpoint: "login",
+    payload: loginData,
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submit Edildi! ", loginData);
-    axiosWithAuth()
-      .post("login", loginData)
-      .then((res) => {
-        const token = res.data.token;
-        localStorage.setItem("token", token);
-        history.push(location.state.referrer);
-      });
+    doLogin().then((resData) => {
+      const token = resData.token;
+      localStorage.setItem("token", token);
+      history.push(location.state.referrer);
+    });
   };
 
   const handleInputChange = (e) => {

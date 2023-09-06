@@ -5,23 +5,17 @@ import axios from "axios";
 import { Spinner } from "reactstrap";
 // internal JS
 import PageDefault from "./PageDefault";
-import ProductCard from "../components/ProductCard";
 import { REQ_TYPES, useAxios } from "../hooks/useAxios";
+import ProductFormYup from "../components/ProductFormYup";
 // CSS imports
 
-const ProductDetailPage = () => {
+const ProductFormPage = () => {
   const { productId } = useParams();
 
   const [getProduct, product, showSpinner] = useAxios({
     reqType: REQ_TYPES.GET,
     endpoint: `products/${productId}`,
   });
-
-  const nums = [1, 2, 3, 4, 5];
-  const [bir, iki, uc, ...kalanlar] = nums;
-
-  const obj1 = { name: "ali", email: "ali@tas.com", age: 19 };
-  const { age, email: userEmail } = obj1;
 
   useEffect(() => {
     productId && getProduct();
@@ -38,17 +32,17 @@ const ProductDetailPage = () => {
   }, []);
 
   return (
-    <PageDefault pageTitle={"Ürün Detay Sayfası " + productId}>
+    <PageDefault pageTitle={"Ürün Form Sayfası " + productId}>
       <div className="products-container d-flex wrap">
         {showSpinner && (
           <Spinner className="m-5" color="primary">
             Loading...
           </Spinner>
         )}
-        {!showSpinner && <ProductCard product={product} />}
+        {!showSpinner && <ProductFormYup productInitial={product} />}
       </div>
     </PageDefault>
   );
 };
 
-export default ProductDetailPage;
+export default ProductFormPage;
