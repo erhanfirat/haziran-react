@@ -11,6 +11,7 @@ import {
 import {
   deleteProductActionCreator,
   loadProductsActionCreator,
+  productsActions,
 } from "../store/actions/productsActions";
 import { toast } from "react-toastify";
 import { REQ_TYPES, useAxios } from "../hooks/useAxios";
@@ -38,24 +39,27 @@ const ProductCard = ({ product }) => {
     history.push(`/product-form/${product?.id}`);
   };
 
-  // const deleteProduct = (productId) =>
-  //   dispatch(deleteProductActionCreator(productId));
+  const deleteProduct = (productId) =>
+    dispatch({
+      type: productsActions.delete,
+      payload: productId,
+    });
 
-  const deleteProduct = () => {
-    product.id &&
-      doDeleteProduct()
-        .then((res) => {
-          // iki seçenek
-          // 1. reducer içinden sil
-          // dispatch({ type: productsActions.delete, payload: productId });
+  // const deleteProduct = () => {
+  //   product.id &&
+  //     doDeleteProduct()
+  //       .then((res) => {
+  //         // iki seçenek
+  //         // 1. reducer içinden sil
+  //         // dispatch({ type: productsActions.delete, payload: productId });
 
-          // 2. load products from zero
-          dispatch(loadProductsActionCreator());
-        })
-        .catch((err) => {
-          toast.error(`HATA! ${err.message}`);
-        });
-  };
+  //         // 2. load products from zero
+  //         dispatch(loadProductsActionCreator());
+  //       })
+  //       .catch((err) => {
+  //         toast.error(`HATA! ${err.message}`);
+  //       });
+  // };
 
   return (
     <Card

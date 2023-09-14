@@ -1,8 +1,15 @@
 import { productsActions } from "../actions/productsActions";
 
+export const FETCH_STATES = {
+  notFetched: "NOT_FETCHED",
+  fetching: "FETHCING",
+  fetched: "FETCHED",
+};
+
 const productsStateInitial = {
   productsList: [],
   loading: false,
+  fetchState: FETCH_STATES.notFetched,
 };
 
 export const productsReducer = (state = productsStateInitial, action) => {
@@ -12,6 +19,9 @@ export const productsReducer = (state = productsStateInitial, action) => {
 
     case productsActions.clear:
       return productsStateInitial;
+
+    case productsActions.setFetchState:
+      return { ...state, fetchState: action.payload };
 
     case productsActions.add:
       if (action.payload && action.payload.id && action.payload.name)

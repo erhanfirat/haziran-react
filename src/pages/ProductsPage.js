@@ -6,22 +6,26 @@ import PageDefault from "./PageDefault";
 import ProductCard from "../components/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProductsActionCreator } from "../store/actions/productsActions";
+import { FETCH_STATES } from "../store/reducers/productsReducer";
 // CSS imports
 
 const ProductsPage = ({}) => {
   const [searchText, setSearchText] = useState("");
   const products = useSelector((store) => store.products.productsList);
+  const productFetched = useSelector((store) => store.products.fetchState);
   const productsLoading = useSelector((store) => store.products.loading);
 
   const dispatch = useDispatch();
 
-  // 
+  //
   useEffect(() => {
     console.warn(
       "[ComponentDidMount] ProductsPage Componenti yüklendi, browser a monte edildi"
     );
 
-    dispatch(loadProductsActionCreator());
+    if (productFetched === FETCH_STATES.notFetched) {
+      dispatch(loadProductsActionCreator());
+    }
 
     return () => {
       console.warn("[ComponentWillUnmount] ProductsPage Componenti silindi");

@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { productsActions } from "../store/actions/productsActions";
+import {
+  loadProductsActionCreator,
+  productsActions,
+} from "../store/actions/productsActions";
 import { Button } from "reactstrap";
 import { loadProducts } from "../utils/endpoints";
 import { useContext } from "react";
@@ -24,6 +27,10 @@ const SideBar = () => {
     loadProducts().then((res) =>
       dispatch({ type: productsActions.set, payload: res.data })
     );
+
+  const fetchProducst = () => {
+    dispatch(loadProductsActionCreator());
+  };
 
   return (
     <div className="side-bar p-3 bg-primary color-white">
@@ -79,6 +86,11 @@ const SideBar = () => {
             >
               Hakkımızda
             </NavLink>
+          </li>
+          <li>
+            <Button color="danger" onClick={fetchProducst}>
+              Fetch Products
+            </Button>
           </li>
           <li>
             <Button color="danger" onClick={clearProducts}>
